@@ -7,9 +7,10 @@ program Converter
     ! do loopを回して、読み込みができるよ。
     ! integerがint型。[2022.4.8 18:40 Kazama]
 
-    character (LEN=100) :: OPFIL0 ! 基本最初に型指定。長さの限界が100文字
-    character (LEN=100) :: open_file
-    INTEGER :: a,b,c,d,e,aa,bb,cc,dd,ee
+    
+    ! parameter指定
+    character (LEN=100) :: OPFIL0,open_file ! 基本最初に型指定。長さの限界が100文字
+    INTEGER :: a,b,c,d,e,NCH
 
     ! Input file
     open_file = '/Users/nyonn/Desktop/pythoncode/4545-5556_0.01step_cutoff_120.txt'
