@@ -1,3 +1,5 @@
+! このファイルはメモ+思考整理用のものです！
+
 ! pythonで作成した吸収係数を入れて、binary fileに変換するプログラム
 ! @author: A.Kazama kazama@pparc.gp.tohoku.ac.jp
 
@@ -13,26 +15,45 @@ program Converter
     ! do loopを回して、読み込みができるよ。
     ! integerがint型。[2022.4.8 18:40 Kazama]
 
-    
     ! parameter指定
-    character (LEN=1000) :: open_file,OPFIL0 ! 基本最初に型指定。長さの限界が100文字
-    INTEGER :: i,N1=10
+    ! 一番最初に本当ならば使う配列やメモリを確保する必要がある
+    character (LEN=1000) :: Openfile01,OPFIL0 ! 基本最初に型指定。長さの限界が100文字
+    INTEGER :: i,N1=3
+    INTEGER :: line_counter
+    INTEGER,ALLOCATABLE::CC(:)  ! ALLOCATABLEはあとで確保してあげようとしている。確保しないと使えない。
     DOUBLE PRECISION :: d,e,WN,NCH
     double precision,allocatable::A(:),B(:)
 
     ! Input file
-    open_file = '/Users/nyonn/Desktop/pythoncode/4545-5556_0.01step_cutoff_120.txt'
-    OPEN(2, FILE = open_file,STATUS='old')
-    READ(2,*) N1
-    ALLOCATE(A(1:N1),B(1:N1))
-    DO i=1,N1
-        read(2,*) A(i),B(i)
-    enddo 
+    Openfile01 = 'vfile/test.txt'
+    OPEN(1, FILE = Openfile01,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
+    line_counter = 0
+    do
+        READ(1,*,end = 999)  ! ただのシグナルだけど、flagのような役割でREADでここまで来たら飛ぶような役割
+        line_counter = line_counter+1  ! 列をわかるようにしている
+    enddo
+    999 continue
+    rewind(1)
+    allocate(CC(line_counter))  ! メモリの確保ができたら、そのファイルを読み込む
 
-    READ(2,*) A,B ! READは格納しないといけなくて、配列の形のまま入れないといけない
-    CLOSE(2)
+    DO i=1,line_counter
+        READ(1,*) CC(i)
+    ENDDO
+    !READ(1,*) CC
+    CLOSE(1)
 
-    print *, A
+    print *, CC
+
+    ! open_file = '/Users/nyonn/Desktop/pythoncode/4545-5556_0.01step_cutoff_120.txt'
+    ! OPEN(2, FILE = open_file,STATUS='old')
+    ! READ(2,*) N1
+    ! ALLOCATE(A(1:N1),B(1:N1))
+    ! DO i=1,N1
+    !    read(2,*) A(i),B(i)
+    ! enddo 
+
+    ! READ(2,*) A,B ! READは格納しないといけなくて、配列の形のまま入れないといけない
+    ! CLOSE(2)
 
     ! Output File
     OPFIL0 = 'vfile/LUtable.v'
