@@ -47,6 +47,8 @@ program Converter
     WRITE(3) WN
     CLOSE(3)
 
+
+    ! .k file making
     ! Input file
     Openfile02 = '/Users/nyonn/Desktop/pythoncode/pre_temp_profile.txt'
     OPEN(2, FILE = Openfile02,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
@@ -65,7 +67,7 @@ program Converter
 
     CLOSE(2)
 
-    ! .k file making
+    ! Output file
     OPFIL1 = 'kfile/LUtable.k'
     OPEN (4,FILE=OPFIL1,FORM='UNFORMATTED',STATUS='replace')
     WRITE(4) line_counter2
@@ -73,3 +75,6 @@ program Converter
     CLOSE(4)
     
 end program Converter
+
+! python側でinfomationの txt fileを作成する。
+! メモリ確保の情報をいれたfileを作成する(e.g. 2 100 みたいなテキストファイル)
