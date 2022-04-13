@@ -5,17 +5,17 @@
 ! ver. 1.0: binary：　pythonのfileを読み込んで、 .v fileを作成する
 ! Created on Sun Apr 10 16:10:00 2022
 
-! ver. 1.1: binary:  pythonのfileを読み込んで、 .k fileを作成する
-! Created on xxxxx  comoing soon...
+! ver. 1.1: binary:  pythonのfileを読み込んで、 .atmos file, .k fileを作成する
+! Created on Wed Apr 13 10:19:00 2022
 
 
 program Converter
     implicit none  ! おまじないで絶対に必要なもの
 
     ! parameter指定
-    character (LEN=1000) :: Openfile01,Openfile02,OPFIL0,OPFIL1 ! 基本最初に型指定。長さの限界が100文字
-    INTEGER :: i, line_counter1, line_counter2 ! ALLOCATABLEはあとで確保してあげようとしている。確保しないと使えない。
-    double precision,allocatable::WN(:),Kw(:),Hight(:),Temp(:),press(:)
+    character (LEN=1000) :: Openfile01,Openfile02,Openfile03,OPFIL0,OPFIL1,OPFIL2 ! 基本最初に型指定。長さの限界が100文字
+    INTEGER :: i,j,k, line_counter1, line_counter2,line_counter3,line_counter4 ! ALLOCATABLEはあとで確保してあげようとしている。確保しないと使えない。
+    double precision,allocatable::WN(:),Kw(:,:),Hight(:),Temp(:),press(:)
 
 
     ! .v file makeing
@@ -29,10 +29,10 @@ program Converter
     enddo
     999 continue
     rewind(1)
-    allocate(WN(line_counter1),Kw(line_counter1))  ! メモリの確保ができたら、そのファイルを読み込む
+    allocate(WN(line_counter1))
 
     DO i=1,line_counter1
-        READ(1,*) WN(i),Kw(i)
+        READ(1,*) WN(i)
     ENDDO
 
     CLOSE(1)
@@ -48,7 +48,7 @@ program Converter
     CLOSE(3)
 
 
-    ! .k file making
+    ! .atmos file making  .txt式
     ! Input file
     Openfile02 = '/Users/nyonn/Desktop/pythoncode/pre_temp_profile.txt'
     OPEN(2, FILE = Openfile02,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
@@ -59,22 +59,41 @@ program Converter
     enddo
     99 continue
     rewind(2)
-    allocate(Hight(line_counter2),Temp(line_counter2),press(line_counter2))  ! メモリの確保ができたら、そのファイルを読み込む
+    allocate(Hight(line_counter2),Press(line_counter2),Temp(line_counter2))  ! メモリの確保ができたら、そのファイルを読み込む
 
     DO i=1,line_counter2
-        READ(2,*) Hight(i),Temp(i),press(i)
+        READ(2,*) Hight(i),Press(i),Temp(i)
     ENDDO
 
     CLOSE(2)
 
     ! Output file
-    OPFIL1 = 'kfile/LUtable.k'
-    OPEN (4,FILE=OPFIL1,FORM='UNFORMATTED',STATUS='replace')
-    WRITE(4) line_counter2
-    WRITE(4) Hight, Temp, press
+    OPFIL1 = 'atmosfile/LUtable.atmos'
+    OPEN (4,FILE=OPFIL1,FORM='FORMATTED',STATUS='replace')
+    WRITE(4,*) line_counter2
+    WRITE(4,*) Hight, Temp, Press
     CLOSE(4)
+
+
+    ! .k file makeing  binary file
+    ! Input file
+    Openfile03 = '/Users/nyonn/Desktop/pythoncode/LUtable_1_Kw.txt'
+    OPEN(5, FILE = Openfile03,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
+    allocate(Kw(31,101100))  ! メモリの確保ができたら、そのファイルを読み込む
+    DO j=1,31
+!        DO k=1, 101099
+            READ(5,*) (Kw(k,j),k=1,101100)
+!             WRITE(*,*) (Kw(k,j),k=1,101100)
+!        ENDDO
+    ENDDO
+    CLOSE(5)
+
+    ! print*, Kw
+
+    ! Output File
+    OPFIL2 = 'kfile/LUtable.k'
+    OPEN (7,FILE=OPFIL2,FORM='UNFORMATTED',STATUS='replace')
+    WRITE(7) 1, Hight, Temp, Press, Kw
+    CLOSE(7)
     
 end program Converter
-
-! python側でinfomationの txt fileを作成する。
-! メモリ確保の情報をいれたfileを作成する(e.g. 2 100 みたいなテキストファイル)
