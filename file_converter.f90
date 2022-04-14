@@ -14,11 +14,11 @@ program Converter
 
     ! parameter指定
     character (LEN=1000) :: Openfile01,Openfile02,Openfile03,OPFIL0,OPFIL1,OPFIL2 ! 基本最初に型指定。長さの限界が100文字
-    INTEGER :: i,j,k, line_counter1, line_counter2,line_counter3,line_counter4 ! ALLOCATABLEはあとで確保してあげようとしている。確保しないと使えない。
-    double precision,allocatable::WN(:),Kw(:,:),Hight(:),Temp(:),press(:)
+    INTEGER :: i,j,k,line_counter1, line_counter2 ! ALLOCATABLEはあとで確保してあげようとしている。確保しないと使えない。
+    double precision,allocatable::WN(:),Kw(:,:),Hight(:),Temp(:),Press(:)
 
 
-    ! .v file makeing
+    ! --------------------------- .v file makeing binaryfile ---------------------------
     ! Input file
     Openfile01 = '/Users/nyonn/Desktop/pythoncode/4545-5556_0.01step_cutoff_120.txt'
     OPEN(1, FILE = Openfile01,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
@@ -37,8 +37,6 @@ program Converter
 
     CLOSE(1)
 
-    ! print *, WN
-
     ! Output File
     OPFIL0 = 'vfile/LUtable.v'
     OPEN (3,FILE=OPFIL0,FORM='UNFORMATTED',STATUS='replace')
@@ -48,7 +46,7 @@ program Converter
     CLOSE(3)
 
 
-    ! .atmos file making  .txt式
+    ! --------------------------- .atmos file making  txtfile ---------------------------
     ! Input file
     Openfile02 = '/Users/nyonn/Desktop/pythoncode/pre_temp_profile.txt'
     OPEN(2, FILE = Openfile02,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
@@ -75,20 +73,16 @@ program Converter
     CLOSE(4)
 
 
-    ! .k file makeing  binary file
+    ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile03 = '/Users/nyonn/Desktop/pythoncode/LUtable_1_Kw.txt'
+    Openfile03 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/LUtable_1_Kw_T.txt'
     OPEN(5, FILE = Openfile03,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
-    allocate(Kw(31,101100))  ! メモリの確保ができたら、そのファイルを読み込む
-    DO j=1,31
-!        DO k=1, 101099
-            READ(5,*) (Kw(k,j),k=1,101100)
-!             WRITE(*,*) (Kw(k,j),k=1,101100)
-!        ENDDO
+    allocate(Kw(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
+    DO j=1,101100
+        READ(5,*) (Kw(j,k),k=1,31)
+!        WRITE(*,*) (Kw(k,j),k=1,101100)
     ENDDO
     CLOSE(5)
-
-    ! print*, Kw
 
     ! Output File
     OPFIL2 = 'kfile/LUtable.k'
