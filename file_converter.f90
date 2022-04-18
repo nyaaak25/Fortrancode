@@ -39,16 +39,16 @@ program Converter
 
     ! Output File
     OPFIL0 = 'vfile/LUtable.v'
-    OPEN (3,FILE=OPFIL0,FORM='UNFORMATTED',STATUS='replace')
-    WRITE(3) 1, 1
-    WRITE(3) 1, line_counter1
-    WRITE(3) WN
-    CLOSE(3)
+    OPEN (9,FILE=OPFIL0,FORM='UNFORMATTED',access='stream',STATUS='replace')
+    WRITE(9) 1, 1
+    WRITE(9) 1, line_counter1
+    WRITE(9) WN
+    CLOSE(9)
 
 
     ! --------------------------- .atmos file making  txtfile ---------------------------
     ! Input file
-    Openfile02 = '/Users/nyonn/Desktop/pythoncode/pre_temp_profile.txt'
+    Openfile02 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_HTP/pre_temp_profile.txt'
     OPEN(2, FILE = Openfile02,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     line_counter2 = 0
     do
@@ -69,13 +69,15 @@ program Converter
     OPFIL1 = 'atmosfile/LUtable.atmos'
     OPEN (4,FILE=OPFIL1,FORM='FORMATTED',STATUS='replace')
     WRITE(4,*) line_counter2
-    WRITE(4,*) Hight, Temp, Press
+    DO i = 1, line_counter2
+        WRITE(4,*) Hight(i), Temp(i), Press(i)/100.
+    enddo
     CLOSE(4)
 
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile03 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/LUtable_1_Kw_T.txt'
+    Openfile03 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/LUtable_1_Kw.txt'
     OPEN(5, FILE = Openfile03,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -86,8 +88,10 @@ program Converter
 
     ! Output File
     OPFIL2 = 'kfile/LUtable.k'
-    OPEN (7,FILE=OPFIL2,FORM='UNFORMATTED',STATUS='replace')
-    WRITE(7) 1, Hight, Temp, Press, Kw
+    OPEN (7,FILE=OPFIL2,FORM='UNFORMATTED',access='stream',STATUS='replace')
+    DO i = 1, line_counter2
+        WRITE(7) 1, real(Hight(i)), real(Temp(i)), real(Press(i)/100.), real(Kw(:,i)*1E5)
+    ENDDO
     CLOSE(7)
     
 end program Converter
