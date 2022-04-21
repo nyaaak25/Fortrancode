@@ -510,7 +510,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile17 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS50.txt'
+    Openfile17 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS50.txt'
     OPEN(33, FILE = Openfile17,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw1(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -529,7 +529,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile18 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS150.txt'
+    Openfile18 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS150.txt'
     OPEN(35, FILE = Openfile18,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw2(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -548,7 +548,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile19 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS180.txt'
+    Openfile19 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS180.txt'
     OPEN(37, FILE = Openfile19,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw3(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -567,7 +567,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile20 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS215.txt'
+    Openfile20 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS215.txt'
     OPEN(39, FILE = Openfile20,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw4(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -586,7 +586,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile21 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS257.txt'
+    Openfile21 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS257.txt'
     OPEN(41, FILE = Openfile21,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw5(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -606,7 +606,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile22 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS308.txt'
+    Openfile22 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS308.txt'
     OPEN(43, FILE = Openfile22,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw6(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -625,7 +625,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile23 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS369.txt'
+    Openfile23 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS369.txt'
     OPEN(45, FILE = Openfile23,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw7(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -644,7 +644,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile24 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS442.txt'
+    Openfile24 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS442.txt'
     OPEN(47, FILE = Openfile24,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw8(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -663,7 +663,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile25 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS529.txt'
+    Openfile25 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS529.txt'
     OPEN(49, FILE = Openfile25,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw9(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -683,7 +683,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile26 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS633.txt'
+    Openfile26 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS633.txt'
     OPEN(51, FILE = Openfile26,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw10(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -702,7 +702,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile27 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS758.txt'
+    Openfile27 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS758.txt'
     OPEN(53, FILE = Openfile27,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw11(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -721,7 +721,7 @@ program Converter
     
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile28 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS907.txt'
+    Openfile28 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS907.txt'
     OPEN(55, FILE = Openfile28,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw12(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -741,7 +741,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile29 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS1096.txt'
+    Openfile29 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS1096.txt'
     OPEN(57, FILE = Openfile29,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw13(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -760,7 +760,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile30 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS1300.txt'
+    Openfile30 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS1300.txt'
     OPEN(59, FILE = Openfile30,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw14(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
@@ -779,7 +779,7 @@ program Converter
 
     ! --------------------------- .k file makeing  binaryfile ---------------------------
     ! Input file
-    Openfile31 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_260_T2_80_PRS1500.txt'
+    Openfile31 = '/Users/nyonn/Desktop/pythoncode/LookUpTable_Kw/Kw_LUTable_T1_285_T2_200_PRS1500.txt'
     OPEN(61, FILE = Openfile31,STATUS='old')  ! 最初にメモリ確保する必要があるから、最初に配列数を知る必要がある
     allocate(Kw15(101100,31))  ! メモリの確保ができたら、そのファイルを読み込む
     DO j=1,101100
